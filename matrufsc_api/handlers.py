@@ -1,10 +1,21 @@
-from aiohttp.web import Request, json_response
+from aiohttp import web
 
 from .utils import query_check, filter_dicts, clean_dicts
 
 
+def json_response(*args, **kwargs):
+    return web.json_response(
+        *args,
+        headers={
+            'Access-Control-Allow-Origin': '*',
+            **kwargs.pop('headers', {})
+        },
+        **kwargs
+    )
+
+
 @query_check(optional=['semester', 'campus'])
-async def courses(request: Request):
+async def courses(request: web.Request):
     query_semester = request.query.get('semester')
     query_campus = request.query.get('campus')
 
@@ -29,11 +40,11 @@ async def courses(request: Request):
 
     data = clean_dicts(data, ['semester', 'campus'])
 
-    return json_response(list(data))
+    return json_response(list(data), headers={})
 
 
 @query_check(required=['course_id'], optional=['semester'])
-async def classes(request: Request):
+async def classes(request: web.Request):
     query_course_id = request.query.get('course_id')
     query_semester = request.query.get('semester')
 

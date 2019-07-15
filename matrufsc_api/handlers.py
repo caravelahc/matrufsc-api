@@ -67,3 +67,19 @@ async def classes(request: web.Request):
     data = clean_dicts(data, ["course_id", "semester"])
 
     return json_response(list(data))
+
+
+async def semesters(request: web.Request):
+    data = request.app["database"].keys()
+    return json_response(list(data))
+
+
+async def campi(request: web.Request):
+    data = list(
+        {
+            campus
+            for semester, campi in request.app["database"].items()
+            for campus in campi
+        }
+    )
+    return json_response(list(data))

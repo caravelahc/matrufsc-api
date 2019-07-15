@@ -34,6 +34,8 @@ def main(database: str, host: str, port: int, update_now: bool, update_interval:
 
     app.router.add_get("/courses", handlers.courses)
     app.router.add_get("/classes", handlers.classes)
+    app.router.add_get("/semesters", handlers.semesters)
+    app.router.add_get("/campi", handlers.campi)
 
     run_app(app, host=host, port=port)
 

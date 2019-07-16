@@ -1,16 +1,15 @@
 import json
-
-from time import sleep
-
 import matrufsc_crawler as crawler
 
+from time import sleep
+from utils import log
 from aiohttp.web import Application
 
 
 def update_database(app):
-    print("Starting database update...")
+    log.info("Starting database update...")
     data = crawler.run()
-    print("Finished database update.")
+    log.info("Finished database update.")
 
     app["database"] = data
     with open(app["database_path"], "w") as f:

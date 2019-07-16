@@ -1,7 +1,14 @@
+import logging
+
 from functools import wraps
 from typing import List, Callable, Iterable, Dict, Container
-
 from aiohttp.web import Request, Response
+
+
+logging.basicConfig(
+    format="%(asctime)s|%(levelname)s - %(message)s", level=logging.INFO
+)
+log = logging.getLogger(__name__)
 
 
 def query_check(*, required: List[str] = [], optional: List[str] = []):

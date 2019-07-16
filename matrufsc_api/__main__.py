@@ -2,7 +2,6 @@ import json
 
 from click import command, argument, option, Path
 from aiohttp.web import Application, run_app
-
 from . import jobs, handlers
 
 

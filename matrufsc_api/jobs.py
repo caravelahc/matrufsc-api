@@ -11,9 +11,12 @@ def update_database(app):
     data = crawler.run()
     log.info("Finished database update.")
 
-    app["database"] = data
-    with open(app["database_path"], "w") as f:
-        json.dump(data, f)
+    if data:
+        app["database"] = data
+        with open(app["database_path"], "w") as f:
+            json.dump(data, f)
+    else:
+        log.warning("Empty crawler response")
 
 
 async def start_database_update(app: Application):

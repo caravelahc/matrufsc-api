@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "matrufsc-api"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Cauê Baasch de Souza <cauebs@pm.me>"]
 license = "MIT"
@@ -12,9 +12,11 @@ matrufsc-api = "matrufsc_api.__main__:main"
 python = "^3.7"
 aiohttp = "^3.5"
 click = "^7.0"
-matrufsc-crawler = {git = "https://github.com/cauebs/matrufsc-crawler"}
+matrufsc-crawler = {git = "https://github.com/cauebs/matrufsc-crawler", tag = "0.2.0"}
 [tool.poetry.dev-dependencies]
 black = "^19.3b0"
+flake8 = "^3.7.8"
+mypy = "^0.720"
 
 [build-system]
 requires = ["poetry>=0.12"]

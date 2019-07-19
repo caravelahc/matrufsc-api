@@ -21,7 +21,7 @@ async def courses(request: web.Request):
             "semester": semester,
             "campus": campus,
             "id": course_id,
-            "name": course["course_name"],
+            "name": course["name"],
             "class_hours": course["class_hours"],
         }
         for semester, campi in request.app["database"].items()
@@ -49,7 +49,7 @@ async def classes(request: web.Request):
         {
             "course_id": course_id,
             "semester": semester,
-            "class_id": class_id,
+            "id": class_id,
             **class_info,
         }
         for semester, campi in request.app["database"].items()

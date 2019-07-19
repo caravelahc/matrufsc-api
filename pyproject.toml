@@ -3,7 +3,7 @@ name = "matrufsc-api"
 version = "0.2.0"
 description = ""
 authors = ["Cauê Baasch de Souza <cauebs@pm.me>"]
-license = "MIT"
+license = "GPL-3.0"
 
 [tool.poetry.scripts]
 matrufsc-api = "matrufsc_api.__main__:main"

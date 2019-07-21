@@ -1,5 +1,5 @@
 import json
-from time import sleep
+from asyncio import sleep
 
 from aiohttp.web import Application
 
@@ -8,9 +8,9 @@ import matrufsc_crawler as crawler
 from .utils import log
 
 
-def update_database(app):
+async def update_database(app: Application):
     log.info("Starting database update...")
-    data = crawler.run()
+    data = await crawler.start(num_semesters=2)
     log.info("Finished database update.")
 
     if data:
@@ -21,16 +21,8 @@ def update_database(app):
         log.warning("Empty crawler response")
 
 
-async def start_database_update(app: Application):
-    update_database(app)
-    app.loop.run_in_executor(None, repeat_database_update, app)
-
-
-async def schedule_database_update(app: Application):
-    app.loop.run_in_executor(None, repeat_database_update, app)
-
-
-def repeat_database_update(app: Application):
+async def repeat_database_update(app: Application):
+    delay = float(app["update_interval"]) * 60
     while True:
-        sleep(float(app["update_interval"]) * 60)
-        update_database(app)
+        await sleep(delay)
+        await update_database(app)

@@ -137,7 +137,7 @@ beautifulsoup4 = "^4.7.1"
 yarl = "^1.3.0"
 
 [package.source]
-reference = "7acbce0f28ae031a95bbea7cb487d016d4817dcc"
+reference = "6a35ba57e6a4cc39244aac40f21fa0cff9baa0b4"
 type = "git"
 url = "https://github.com/cauebs/matrufsc-crawler"
 [[package]]

@@ -1,6 +1,6 @@
 from aiohttp import web
 
-from .utils import query_check, filter_dicts, clean_dicts
+from .utils import clean_dicts, filter_dicts, query_check
 
 
 def json_response(*args, **kwargs):

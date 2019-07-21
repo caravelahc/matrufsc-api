@@ -1,10 +1,12 @@
 import json
-
-from click import command, argument, option, echo, format_filename
-from aiohttp.web import Application, run_app
-from . import jobs, handlers
 from pathlib import Path
-from utils import log
+
+from aiohttp.web import Application, run_app
+from click import argument, command, format_filename, option
+
+from .utils import log
+
+from . import handlers, jobs
 
 
 @command()

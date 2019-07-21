@@ -1,9 +1,11 @@
 import json
+from time import sleep
+
+from aiohttp.web import Application
+
 import matrufsc_crawler as crawler
 
-from time import sleep
-from utils import log
-from aiohttp.web import Application
+from .utils import log
 
 
 def update_database(app):

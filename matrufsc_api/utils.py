@@ -1,9 +1,8 @@
 import logging
-
 from functools import wraps
-from typing import List, Callable, Iterable, Dict, Container
-from aiohttp.web import Request, Response
+from typing import Callable, Container, Dict, Iterable, List
 
+from aiohttp.web import Request, Response
 
 logging.basicConfig(
     format="%(asctime)s|%(levelname)s - %(message)s", level=logging.INFO

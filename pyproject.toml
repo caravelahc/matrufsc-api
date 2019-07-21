@@ -12,7 +12,7 @@ matrufsc-api = "matrufsc_api.__main__:main"
 python = "^3.7"
 aiohttp = "^3.5"
 click = "^7.0"
-matrufsc-crawler = {git = "https://github.com/cauebs/matrufsc-crawler", tag = "0.2.0"}
+matrufsc-crawler = {git = "https://github.com/cauebs/matrufsc-crawler"}
 [tool.poetry.dev-dependencies]
 black = "^19.3b0"
 flake8 = "^3.7.8"

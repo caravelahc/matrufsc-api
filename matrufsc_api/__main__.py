@@ -37,7 +37,7 @@ def main(database: str, host: str, port: int, update_now: bool, update_interval:
         with open(database) as f:
             app["database"] = json.load(f)
 
-    app.on_startup.append(jobs.repeat_database_update)
+    app.on_startup.append(jobs.start_database_updater)
 
     app.router.add_get("/courses", handlers.courses)
     app.router.add_get("/classes", handlers.classes)

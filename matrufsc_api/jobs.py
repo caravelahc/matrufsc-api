@@ -21,7 +21,11 @@ async def update_database(app: Application):
         log.warning("Empty crawler response")
 
 
-async def repeat_database_update(app: Application):
+async def start_database_updater(app: Application):
+    app.loop.create_task(_repeat_database_update(app))
+
+
+async def _repeat_database_update(app: Application):
     delay = float(app["update_interval"]) * 60
     while True:
         await sleep(delay)

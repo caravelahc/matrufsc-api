@@ -46,12 +46,7 @@ async def classes(request: web.Request):
     query_semester = request.query.get("semester")
 
     data = (
-        {
-            "course_id": course_id,
-            "semester": semester,
-            "id": class_id,
-            **class_info,
-        }
+        {"course_id": course_id, "semester": semester, "id": class_id, **class_info}
         for semester, campi in request.app["database"].items()
         for campus, courses in campi.items()
         for course_id, course in courses.items()
@@ -64,8 +59,7 @@ async def classes(request: web.Request):
     if query_semester is not None:
         data = filter_dicts(data, "semester", query_semester)
 
-    data = clean_dicts(data, ["course_id", "semester"])
-
+    data = clean_dicts(data, ["semester"])
     return json_response(list(data))
 
 
